@@ -1,0 +1,86 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:app="http://schemas.android.com/apk/res-auto" xmlns:tool="http://schemas.android.com/tools"
+>
+
+    <data>
+        <variable
+                name="viewModel"
+                type="shasin.weatherapp.viewModels.weatherForecastViewModel.WeatherForeCastViewModelImpl"/>
+
+        <import type="android.view.View"/>
+    </data>
+
+    <android.support.design.widget.CoordinatorLayout
+            android:id="@+id/mainRootLayout"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:background="@color/bg_color">
+
+
+        <include android:id="@+id/loadingLayout"
+                 android:visibility="@{viewModel.isLoading() ? View.VISIBLE: View.GONE, default=visible}"
+                 layout="@layout/item_layout_loading"/>
+
+
+        <include
+                android:id="@+id/errorLayout"
+                android:visibility="@{(viewModel.isError() ? View.VISIBLE: View.GONE), default=gone}"
+                layout="@layout/item_layout_error"/>
+
+        <RelativeLayout
+                android:id="@+id/weatherLayout"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:gravity="center"
+                android:visibility="@{(viewModel.isSuccess() ? View.VISIBLE: View.GONE), default=gone}"
+                android:orientation="vertical">
+
+
+            <TextView
+                    android:layout_marginTop="56dp"
+                    android:id="@+id/tvCurrentTemp"
+                    android:layout_marginLeft="22dp"
+                    android:layout_marginRight="22dp"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:textSize="96sp"
+                    android:fontFamily="@font/roboto_black"
+                    android:textColor="@color/text_color"
+                    android:lineSpacingExtra="1.2sp"
+                    android:textAlignment="center"
+                    android:text="@{viewModel.currentWeather}"
+                    tool:text="20°"
+            />
+
+            <TextView
+                    android:id="@+id/tvCurrentLocation"
+                    android:layout_below="@id/tvCurrentTemp"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="22dp"
+                    android:layout_marginRight="22dp"
+                    android:textSize="36sp"
+                    android:maxLines="1"
+                    android:ellipsize="end"
+                    android:fontFamily="@font/roboto_thin"
+                    android:textColor="@color/text_current_location"
+                    android:lineSpacingExtra="1.4sp"
+                    android:layout_marginBottom="62dp"
+                    android:gravity="center_horizontal"
+                    android:textAlignment="center"
+                    android:text="@{viewModel.currentLocationName}"
+                    tool:text="Singapore"
+            />
+
+            <include android:id="@+id/bottomLayout"
+                     android:layout_alignParentBottom="true"
+                     android:layout_below="@id/tvCurrentLocation"
+                     android:layout_width="match_parent"
+                     android:layout_height="wrap_content"
+                     layout="@layout/item_bottom_sheet_forecast" />
+        </RelativeLayout>
+
+
+    </android.support.design.widget.CoordinatorLayout>
+</layout>

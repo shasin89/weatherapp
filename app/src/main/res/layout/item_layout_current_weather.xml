@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:tool="http://schemas.android.com/tools">
+
+    <data>
+        <variable name="viewModel"
+                  type="shasin.weatherapp.viewModels.weatherForecastViewModel.WeatherForeCastViewModelImpl"></variable>
+        <import type="android.view.View"/>
+    </data>
+
+
+    <LinearLayout
+            android:id="@+id/itemCurrentWeatherRootLayout"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center_horizontal"
+            android:orientation="vertical">
+
+        <TextView
+                android:layout_marginTop="56dp"
+                android:id="@+id/tvCurrentTemp"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textSize="96sp"
+                android:fontFamily="@font/roboto_black"
+                android:textColor="@color/text_color"
+                android:lineSpacingExtra="1.2sp"
+                android:text="@{viewModel.currentWeather}"
+                tool:text="20\u00B0"
+        />
+
+        <TextView
+                android:id="@+id/tvCurrentLocation"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textSize="36sp"
+                android:fontFamily="@font/roboto_thin"
+                android:textColor="@color/text_current_location"
+                android:lineSpacingExtra="1.4sp"
+                android:layout_marginBottom="62dp"
+                android:text="@{viewModel.currentLocationName}"
+                tool:text="Bangalore"
+        />
+    </LinearLayout>
+
+</layout>

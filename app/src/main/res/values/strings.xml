@@ -1,0 +1,7 @@
+<resources>
+    <string name="app_name">GoJekWeatherApp</string>
+    <string name="something_went_wrong">Something went wrong at our end!</string>
+    <string name="btn_retry">RETRY</string>
+    <string name="unable_to_get_current_location">Unable to get current location</string>
+
+</resources>
