@@ -1,6 +1,6 @@
 package shasin.weatherapp.viewModels.weatherForecastViewModel
 
-import android.arch.lifecycle.LiveData
+import androidx.lifecycle.LiveData
 import shasin.weatherapp.data.model.ForecastDays
 import shasin.weatherapp.data.responseModel.WeatherForecastResponse
 import shasin.weatherapp.network.api.Resource

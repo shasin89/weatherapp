@@ -1,5 +1,6 @@
 package shasin.weatherapp.viewModels.weatherForecastViewModel
 
+import androidx.lifecycle.*
 import shasin.weatherapp.data.model.ForecastDays
 import shasin.weatherapp.data.responseModel.WeatherForecastResponse
 import shasin.weatherapp.network.api.Resource
@@ -8,7 +9,7 @@ import shasin.weatherapp.repository.WeatherForecastRepository
 import javax.inject.Inject
 
 class WeatherForeCastViewModelImpl @Inject constructor(var weatherForecastRepository: WeatherForecastRepository):
-    WeatherforeCastViewModel,ViewModel(){
+    WeatherforeCastViewModel, ViewModel(){
 
     private val isLoading: MutableLiveData<Boolean> = MutableLiveData()
     private val isError: MutableLiveData<Boolean> = MutableLiveData()

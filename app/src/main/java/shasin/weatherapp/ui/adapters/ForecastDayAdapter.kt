@@ -1,14 +1,15 @@
 package shasin.weatherapp.ui.adapters
 
-import android.databinding.DataBindingUtil
-import android.support.annotation.LayoutRes
-import android.support.v7.widget.RecyclerView
+import androidx.databinding.DataBindingUtil
+import androidx.annotation.LayoutRes
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.recyclerview.widget.RecyclerView
 import shasin.weatherapp.R
 import shasin.weatherapp.data.model.ForecastDay
 import shasin.weatherapp.databinding.ItemForecastdayCellBinding
+
 
 class ForecastDayAdapter(var models: ArrayList<ForecastDay>)
     : RecyclerView.Adapter<RecyclerView.ViewHolder>() {

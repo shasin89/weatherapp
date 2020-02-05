@@ -3,19 +3,24 @@ package shasin.weatherapp.di
 import android.app.Activity
 import android.app.Application
 import android.os.Bundle
-import android.support.v4.app.Fragment
-import android.support.v4.app.FragmentActivity
-import android.support.v4.app.FragmentManager
+import androidx.fragment.app.Fragment
+import androidx.fragment.app.FragmentActivity
+import androidx.fragment.app.FragmentManager
 import dagger.android.AndroidInjection
 import dagger.android.support.AndroidSupportInjection
 import dagger.android.support.HasSupportFragmentInjector
 import shasin.weatherapp.BaseApplication
+import shasin.weatherapp.di.modules.ApplicationModule
+import shasin.weatherapp.di.components.DaggerApplicationComponent
 
 /**
  * Helper class to automatically inject fragments if they implement [Injectable].
  */
 object AppInjector {
     fun init(baseApplication: BaseApplication) {
+        DaggerApplicationComponent.builder().application(baseApplication)
+            .applicationModule(ApplicationModule())
+            .build().inject(baseApplication)
         baseApplication
             .registerActivityLifecycleCallbacks(object : Application.ActivityLifecycleCallbacks {
                 override fun onActivityCreated(activity: Activity, savedInstanceState: Bundle?) {

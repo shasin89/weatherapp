@@ -2,34 +2,37 @@ package shasin.weatherapp
 
 import android.app.Activity
 import android.app.Application
-import dagger.android.DaggerApplication
-import dagger.android.DispatchingAndroidInjector
+import android.app.Service
 import dagger.android.HasActivityInjector
 import shasin.weatherapp.di.AppInjector
+import dagger.android.AndroidInjector
+import dagger.android.DispatchingAndroidInjector
+import dagger.android.HasServiceInjector
 import shasin.weatherapp.di.components.ApplicationComponent
-import shasin.weatherapp.di.components.DaggerApplicationComponent
 import javax.inject.Inject
 
-class BaseApplication : Application(), HasActivityInjector {
+class BaseApplication : Application(), HasActivityInjector , HasServiceInjector{
 
     @Inject
     lateinit var dispatchingAndroidInjector: DispatchingAndroidInjector<Activity>
 
     @Inject
+    lateinit var dispatchingServiceInjector: DispatchingAndroidInjector<Service>
+
+    @Inject
     lateinit var applicationComponent: ApplicationComponent
-    private val mLock = Any()
 
     override fun onCreate() {
         super.onCreate()
-        synchronized(mLock) {
             singleton = this
-            DaggerApplicationComponent.builder().application(this)
-                .build().inject(this)
             AppInjector.init(this)
-        }
     }
 
     override fun activityInjector() = dispatchingAndroidInjector
+
+    override fun serviceInjector(): AndroidInjector<Service> {
+        return dispatchingServiceInjector
+    }
 
     companion object {
         // Singleton Instance

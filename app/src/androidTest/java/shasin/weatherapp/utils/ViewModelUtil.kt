@@ -1,8 +1,8 @@
 
 package shasin.weatherapp.utils
 
-import android.arch.lifecycle.ViewModel
-import android.arch.lifecycle.ViewModelProvider
+import androidx.lifecycle.ViewModel
+import androidx.lifecycle.ViewModelProvider
 
 object ViewModelUtil {
     fun <T : ViewModel> createFor(model: T): ViewModelProvider.Factory {
