@@ -22,7 +22,7 @@ Model View ViewModel design pattern is used along with LiveData as reactive appr
 ## Setup
 
 * This app use the free plan weatherstack.com. Get your api access token [here](https://weatherstack.com/documentation)
-* Once you have the access token, paste this line in your gradle.properties file:`APIXU_API_KEY= "Paste_Your_API_Token_Here"`
+* Once you have the access token, paste this line in your gradle.properties file:`API_KEY= "Paste_Your_API_Token_Here"`
 
 
 ## Author Profile

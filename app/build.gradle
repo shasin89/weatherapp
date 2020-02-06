@@ -19,12 +19,12 @@ buildscript {
 android {
     compileSdkVersion 28
     defaultConfig {
-        applicationId "shasin.gojekweatherapp"
+        applicationId "shasin.weatherapp"
         minSdkVersion 16
         targetSdkVersion 28
         versionCode 1
         versionName "1.0"
-        testInstrumentationRunner "shasin.gojekweatherapp.AndroidTestRunner"
+        testInstrumentationRunner "shasin.weatherapp.AndroidTestRunner"
 
     }
 
@@ -41,12 +41,12 @@ android {
         release {
             minifyEnabled false
             proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
-            buildConfigField "String", 'API_KEY', (project.findProperty("APIXU_API_KEY") ?: "")
-            buildConfigField "String", 'BASE_URL', "\"https://api.apixu.com\""
+            buildConfigField "String", 'API_KEY', (project.findProperty("API_KEY") ?: "")
+            buildConfigField "String", 'BASE_URL', "\"http://api.weatherstack.com/\""
         }
         debug{
-            buildConfigField "String", 'API_KEY', (project.findProperty("APIXU_API_KEY") ?: "")
-            buildConfigField "String", 'BASE_URL', "\"https://api.apixu.com\""
+            buildConfigField "String", 'API_KEY', (project.findProperty("API_KEY") ?: "")
+            buildConfigField "String", 'BASE_URL', "\"http://api.weatherstack.com/\""
         }
     }
 }

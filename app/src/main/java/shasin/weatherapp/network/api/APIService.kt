@@ -9,11 +9,11 @@ import shasin.weatherapp.data.responseModel.WeatherForecastResponse
 interface APIService {
 
     @GET(ApiRoutes.GET_WEATHER_CURRENT)
-    fun getCurrentWeather(@Query("key") key: String, @Query("q") q: String): Call<Response>
+    fun getCurrentWeather(@Query("access_key") key: String, @Query("query") q: String): Call<Response>
 
     @GET(ApiRoutes.GET_WEATHER_FORECAST)
-    fun getForecastWeather(@Query("key") key: String, @Query("q") q: String,
-                           @Query("days") days: Int): Call<WeatherForecastResponse>
+    fun getForecastWeather(@Query("access_key") key: String, @Query("query") q: String,
+                           @Query("forecast_days") days: Int): Call<WeatherForecastResponse>
 
 
 }
