@@ -1,5 +1,3 @@
-# Gojek WeatherApp Assignment
-	
 ## Overview
 	
 Hi, Welcome. This is a test weather application created by Shasindran Poonudurai. This app is built using MVVM Architecture Design pattern along with Android Architecture Component such as LiveData, ViewModel , Databinding and etc.  
